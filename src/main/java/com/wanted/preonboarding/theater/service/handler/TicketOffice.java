@@ -1,11 +1,8 @@
-package com.wanted.preonboarding.theater.entity;
-
-import lombok.Getter;
+package com.wanted.preonboarding.theater.service.handler;
 
 import java.util.Arrays;
 import java.util.List;
 
-@Getter
 public class TicketOffice {
     private long amount;
     private final List<Ticket> tickets;

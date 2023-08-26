@@ -1,11 +1,21 @@
 package com.wanted.preonboarding.theater.service.handler;
 
-import com.wanted.preonboarding.theater.entity.Audience;
-import com.wanted.preonboarding.theater.entity.TicketSeller;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-public interface Theater {
+@RequiredArgsConstructor
+public class Theater {
 
-    void enter(Audience audience, TicketSeller ticketSeller);
+    public void enter(Audience audience, TicketSeller ticketSeller){
+        if(audience.getBag().hasInvitation()){
+            Ticket ticket = ticketSeller.getTicketOffice().getTicket();
+            audience.getBag().setTicket(ticket);
+        }else {
+            Ticket ticket = ticketSeller.getTicketOffice().getTicket();
+            audience.getBag().minusAmount(ticket.getFee());
+            ticketSeller.getTicketOffice().plusAmount(ticket.getFee());
+            audience.getBag().setTicket(ticket);
+        }
+    }
 }

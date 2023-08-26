@@ -1,8 +1,5 @@
-package com.wanted.preonboarding.theater.entity;
+package com.wanted.preonboarding.theater.service.handler;
 
-import lombok.Getter;
-
-@Getter
 public class Bag {
     private Long amount;
     private final Invitation invitation;
